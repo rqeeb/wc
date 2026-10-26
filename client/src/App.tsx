@@ -1,5 +1,6 @@
 import "./App.css";
 import ChatHeader from "./components/ChatHeader.tsx";
+import MessageInput from "./components/MessageInput.tsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
 
         <span className="chat">Hello </span>
         <span className="chat">Hello </span>
+        <MessageInput />
       </div>
     </div>
   );
