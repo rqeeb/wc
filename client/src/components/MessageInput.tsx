@@ -15,21 +15,22 @@ const MessageInput = () => {
   };
 
   return (
-    <div>
+    <div className="messageInput">
       <input
         id="username"
         value={username}
         onChange={handleUsername}
         name="username"
         type="text"
+        className="input"
       />
-      <p>Current username: {username}</p>
       <input
         id="message"
         value={message}
         onChange={handleMessage}
         name="message"
         type="text"
+        className="input"
       />
       <button>Send</button>
     </div>

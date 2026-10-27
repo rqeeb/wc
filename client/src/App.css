@@ -11,14 +11,20 @@
   border-left: 3px solid grey;
   border-right: 3px solid grey;
 
-  width: 60%;
-  height: 100%;
+  width: 60vw;
+  height: 100vh;
 
   padding: 25px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .from {
   color: aqua;
+}
+.from2 {
+  color: red;
 }
 
 /* Header */
@@ -36,6 +42,20 @@
   margin-right: 4px;
 }
 
-.headerContainer {
-  margin-bottom: 80px;
+/* message list  */
+.messageList {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* message input */
+.messageInput {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  flex: 1;
+  margin: auto;
 }
