@@ -22,13 +22,6 @@
   overflow-x: hidden;
 }
 
-.from {
-  color: aqua;
-}
-.from2 {
-  color: red;
-}
-
 /* Header */
 .headerContainer {
   display: flex;
