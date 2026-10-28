@@ -1,8 +1,7 @@
-// import React from 'react'
-
 import React, { useState } from "react";
+import type { MessageInputProps } from "./types";
 
-const MessageInput = () => {
+const MessageInput = ({ onSend }: MessageInputProps) => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
@@ -14,6 +13,13 @@ const MessageInput = () => {
     setMessage(event.target.value);
   };
 
+  function processInput() {
+    if (!username.trim() || !message.trim()) return;
+
+    onSend(username.trim(), message.trim());
+    setMessage("");
+  }
+
   return (
     <div className="messageInput">
       <input
@@ -22,7 +28,6 @@ const MessageInput = () => {
         onChange={handleUsername}
         name="username"
         type="text"
-        className="input"
       />
       <input
         id="message"
@@ -30,9 +35,8 @@ const MessageInput = () => {
         onChange={handleMessage}
         name="message"
         type="text"
-        className="input"
       />
-      <button>Send</button>
+      <button onClick={processInput}>Send</button>
     </div>
   );
 };

@@ -11,13 +11,15 @@
   border-left: 3px solid grey;
   border-right: 3px solid grey;
 
-  width: 60vw;
+  width: 100%;
+  max-width: 850px;
   height: 100vh;
 
   padding: 25px;
 
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .from {
@@ -50,12 +52,17 @@
 
 /* message input */
 .messageInput {
-  margin-top: auto;
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
 }
 
-.input {
+#username {
+  width: 90px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+#message {
   flex: 1;
-  margin: auto;
+  min-width: 0;
 }

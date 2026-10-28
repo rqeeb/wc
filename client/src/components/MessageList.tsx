@@ -1,15 +1,14 @@
-// import React from "react";
+import type { MessageListProps } from "./types";
 
-const MessageList = () => {
+const MessageList = ({ messages }: MessageListProps) => {
   return (
     <div className="messageList">
-      <span className="from2">Rober: </span>
-      <span className="chat">Hello </span>
-
-      <br />
-      
-      <span className="from">Rober: </span>
-      <span className="chat">How u doing </span>
+      {messages.map((message) => (
+        <div key={message.username}>
+          <span className="from">{message.username}: </span>
+          <span className="chat">{message.text}</span>
+        </div>
+      ))}
     </div>
   );
 };
