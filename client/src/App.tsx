@@ -6,17 +6,17 @@ import MessageList from "./components/MessageList.tsx";
 import type { Message } from "./components/types.ts";
 
 function App() {
-  const [messages,setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
-  function sendMessage(username:string,text:string){
-    const newMessage:Message = {
-      id:crypto.randomUUID(),
+  function sendMessage(username: string, text: string) {
+    const newMessage: Message = {
+      id: crypto.randomUUID(),
       username,
       text,
-      timestamp:new Date(),
+      timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev,newMessage]);
+    setMessages((prev) => [...prev, newMessage]);
   }
 
   return (
@@ -26,7 +26,7 @@ function App() {
         <br />
         <hr />
         <br />
-        <MessageList messages={messages}/>
+        <MessageList messages={messages} />
         <MessageInput onSend={sendMessage} />
       </div>
     </div>
