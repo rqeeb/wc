@@ -7,7 +7,7 @@ const ChatHeader = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.body.classList.toggle("dark", darkMode);
+    document.body.classList.toggle("light", darkMode);
   }, [darkMode]);
 
   return (
