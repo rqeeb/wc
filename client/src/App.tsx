@@ -10,6 +10,7 @@ function App() {
 
   function sendMessage(username:string,text:string){
     const newMessage:Message = {
+      id:crypto.randomUUID(),
       username,
       text,
       timestamp:new Date(),

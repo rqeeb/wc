@@ -14,9 +14,9 @@ const MessageList = ({ messages }: MessageListProps) => {
   return (
     <div className="messageList">
       {messages.map((message) => (
-        <div key={message.username}>
+        <div key={message.id}>
           <span
-            className="from1"
+            className="from"
             style={{ color: usernameColor(message.username) }}
           >
             {message.username}:{" "}

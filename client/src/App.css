@@ -37,10 +37,30 @@
   margin-right: 4px;
 }
 
+.headerChild {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.themeToggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: inherit;
+}
+
 /* message list  */
 .messageList {
   flex: 1;
   overflow-y: auto;
+}
+
+.chat {
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 /* message input */
