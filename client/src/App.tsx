@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import ChatHeader from "./components/ChatHeader.tsx";
 import MessageInput from "./components/MessageInput.tsx";
@@ -18,6 +18,13 @@ function App() {
 
     setMessages((prev) => [...prev, newMessage]);
   }
+
+  useEffect(() => {
+    const ws = new WebSocket("ws://localhost:8080");
+    ws.onmessage = (event) => {
+      console.log(event.data);
+    };
+  }, []);
 
   return (
     <div className="container">

@@ -5,13 +5,13 @@ const MessageInput = ({ onSend }: MessageInputProps) => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleUsername(event: React.ChangeEvent<HTMLInputElement>) {
     setUsername(event.target.value);
-  };
+  }
 
-  const handleMessage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleMessage(event: React.ChangeEvent<HTMLInputElement>) {
     setMessage(event.target.value);
-  };
+  }
 
   function processInput() {
     if (!username.trim() || !message.trim()) return;
