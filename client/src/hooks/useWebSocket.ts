@@ -29,5 +29,23 @@ export function useWebSocket() {
         console.error("Invalid message recieved: ", err);
       }
     };
-  });
+
+    ws.onclose = () => setConnected(false);
+    ws.onerror = (err) => console.error(err);
+
+    return () => {
+      ws.close();
+      if (wsRef.current === ws) {
+        wsRef.current = null;
+      }
+    };
+  }, []);
+
+  function sendMessage(username: string, text: string) {
+    if (wsRef.current?.readyState !== WebSocket.OPEN) return;
+
+    wsRef.current.send(JSON.stringify({ username, text }));
+  }
+
+  return { messages, sendMessage, connected };
 }

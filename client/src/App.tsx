@@ -1,30 +1,11 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import ChatHeader from "./components/ChatHeader.tsx";
-import MessageInput from "./components/MessageInput.tsx";
-import MessageList from "./components/MessageList.tsx";
-import type { Message } from "./components/types.ts";
+import ChatHeader from "./components/ChatHeader";
+import MessageInput from "./components/MessageInput";
+import MessageList from "./components/MessageList";
+import { useWebSocket } from "./hooks/useWebSocket";
 
 function App() {
-  const [messages, setMessages] = useState<Message[]>([]);
-
-  function sendMessage(username: string, text: string) {
-    const newMessage: Message = {
-      id: crypto.randomUUID(),
-      username,
-      text,
-      timestamp: new Date(),
-    };
-
-    setMessages((prev) => [...prev, newMessage]);
-  }
-
-  useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
-    ws.onmessage = (event) => {
-      console.log(event.data);
-    };
-  }, []);
+  const { messages, sendMessage, connected } = useWebSocket();
 
   return (
     <div className="container">

@@ -3,8 +3,6 @@ import { WebSocketServer } from "ws";
 const wss = new WebSocketServer({ port: 8080 });
 
 wss.on("connection", function (socket) {
-  socket.send("Hello from Server!");
-
   socket.on("message", (data) => {
     const message = data.toString();
 
