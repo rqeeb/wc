@@ -28,7 +28,7 @@
   justify-content: space-between;
 }
 
-.greenDot {
+.dot {
   border-radius: 50%;
   background-color: #2ecc71;
   display: inline-block;
@@ -37,11 +37,15 @@
   margin-right: 4px;
 }
 
-.headerChild {
+.dot.grey {
+  background-color: grey;
+}
+
+.headerSplit {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
 }
 
 .themeToggle {

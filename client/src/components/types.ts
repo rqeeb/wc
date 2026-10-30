@@ -1,3 +1,5 @@
+import type { LucideIcon } from "lucide-react";
+
 export interface Message {
   id: string;
   username: string;
@@ -11,4 +13,13 @@ export interface MessageListProps {
 
 export interface MessageInputProps {
   onSend: (username: string, text: string) => void;
+}
+
+export interface ChatHeaderProps {
+  connected: boolean;
+}
+
+export interface ChatHeaderChildProps {
+  Icon: LucideIcon;
+  onClick: () => void;
 }

@@ -1,5 +1,5 @@
 import "./App.css";
-import ChatHeader from "./components/ChatHeader";
+import ChatHeader from "./components/ChatHeader/ChatHeader";
 import MessageInput from "./components/MessageInput";
 import MessageList from "./components/MessageList";
 import { useWebSocket } from "./hooks/useWebSocket";
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="container">
       <div className="box">
-        <ChatHeader />
+        <ChatHeader connected={connected} />
         <br />
         <hr />
         <br />
