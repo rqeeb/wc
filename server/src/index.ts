@@ -2,31 +2,40 @@ import { WebSocket, WebSocketServer } from "ws";
 
 const wss = new WebSocketServer({ port: 8080 });
 
-let allSockets: WebSocket[] = [];
+interface Users {
+  socket: WebSocket;
+  room: string;
+}
+
+let allSockets: Users[] = [];
 
 wss.on("connection", function (socket) {
-  allSockets.push(socket);
+  socket.on("message", (message) => {
+    const parsedData = JSON.parse(message as unknown as string);
 
-  socket.on("message", (data) => {
-    const message = data.toString();
+    if (parsedData.type == "join") {
+      allSockets.push({
+        socket,
+        room: parsedData.payload.room,
+      });
+      console.log("User Registered!");
+    }
 
-    //TODO
-    // wss.clients.forEach((client) => {
-    //   if (client.readyState == WebSocket.OPEN) {
-    //     client.send(message);
-    //   }
-    // });
+    if (parsedData.type == "message") {
+      const currUserRoom = allSockets.find((x) => x.socket == socket)?.room;
 
-    for (let i = 0; i < allSockets.length; i++) {
-      let client = allSockets[i];
-      if (!client) {
-        return;
+      for (let i = 0; i < allSockets.length; i++) {
+        if (
+          allSockets[i]?.socket != socket &&
+          allSockets[i]?.room == currUserRoom
+        ) {
+          allSockets[i]?.socket.send(parsedData.payload.message);
+        }
       }
-      client.send(message);
     }
   });
 
-  socket.on("close", () => {
-    allSockets = allSockets.filter((x) => x != socket);
-  });
+  // socket.on("close", () => {
+  //   allSockets = allSockets.filter((x) => x != socket);
+  // });
 });
